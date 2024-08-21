@@ -5,7 +5,6 @@
 # Explanation: https://2130706433.net/blog/pyyaml/
 import yaml
 from flask import Flask, render_template, request, redirect, url_for
-import os
 from flask import Flask, render_template, request, redirect, url_for, abort, \
     send_from_directory
 from werkzeug.utils import secure_filename
