@@ -28,7 +28,6 @@ def upload():
         file_content = process_file(file_name)
     return render_template('index.html', file_content=file_content)
 
-    #return render_template('index.html', file_name=file_name, file_content=file_content)
 
 def process_file(file_name):
     """Lit le fichier texte et retourne son contenu. Pour d'autres types de fichiers, ajustez le traitement."""
