@@ -28,8 +28,8 @@ def upload():
             return f'{Fore.RED}[-] No selected file{Fore.RESET}'
         
         file_name = file.filename
-        if '/' in file_name or file_name.count('.') > 1:
-            print(f'{Fore.RED}[-] Attaque via injection : {file.filename}{Fore.RESET}')
+        if ".." in file_name or "/" in file_name or "\\" in file_name:
+            raise ValueError(f"{Fore.RED}[-] Invalid filename : {file.filename}{Fore.RESET}")
             
         file_content = process_file(file_name)
         print(f"{Fore.GREEN}[+] file uploded !{Fore.RESET}")
