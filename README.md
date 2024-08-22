@@ -3,6 +3,11 @@
 L'objectif de ce repository et de pouvoir fournir une formation DevSecOps la plus complète possible. Pour cela on exploite la CVE-2020-1747 qui permet à un utilisateur d'exécuter du code en injectant un fichier YAML.
 L'application permet à un utilisateur de selectionner un fichier YAML et de l'upload. Il intègre, par défaut, la version 5.3 de la bibliothèque PyYAML qui est vulnérable à la CVE-2020-1747
 
+Pré-requis :
+- Avoir Git installé sur son PC
+- Avoir un pc Windows
+- Avoir un compte github
+
 Etapes à suivre :
 
 1) Télécharger le zip via github et le dézipper
@@ -20,3 +25,4 @@ Etapes à suivre :
 7) Relancer l'application et vérifier quand le fichier "requirements.txt" s'est bien mis à jour et que la version de PyYAML est bien la 5.3.1 "PyYAML==5.3.1"
 
 8) Aller sur le navigateur et dans la barre de navigation taper "127.0.0.1:5000". Essayer à nouveau d'envoyer le fichier YAML et regarder le terminal. Une erreur (500) devrait apparaître. Il n'est donc plus possible d'exploiter la vulnérabilité.
+
