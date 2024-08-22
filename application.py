@@ -5,15 +5,11 @@
 import yaml
 import subprocess
 import os
-import pipreqs
 from flask import Flask, render_template, request, redirect, url_for, abort, \
     send_from_directory
 from pathlib import Path
 import sys
-from colorama import Fore, Back, Style, init
    
-
-init() #Init colorama 
 app = Flask(__name__)
 @app.route('/')
 def index():
