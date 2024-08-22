@@ -17,6 +17,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+#Crée le /upload du HTML et permet de sélectionner un fichier et de l'envoyer
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
@@ -26,14 +27,9 @@ def upload():
         if file.filename == '':
             return f'{Fore.RED}[-] No selected file{Fore.RESET}'
         
-        print(f'{Fore.YELLOW}{file.filename}{Fore.RESET}')
-        filename = file.filename
-        if '/' in file.filename or filename.count('.') == 1:
-            file_name = file.filename
-            print(f'{Fore.GREEN}[-] Good filename :{file.filename}{Fore.RESET}')
-        else:
-            file_name = file.filename
-            print(f'{Fore.RED}[-] Bad filename :{file.filename}{Fore.RESET}')
+        file_name = file.filename
+        if '/' in file_name or file_name.count('.') > 1:
+            print(f'{Fore.RED}[-] Attaque via injection : {file.filename}{Fore.RESET}')
             
         file_content = process_file(file_name)
         print(f"{Fore.GREEN}[+] file uploded !{Fore.RESET}")
@@ -42,7 +38,6 @@ def upload():
 
 def process_file(file_name):
     """Lit le fichier texte et retourne son contenu. Pour d'autres types de fichiers, ajustez le traitement."""
-    print(file_name)
     if ".yaml" in file_name:
         with open(file_name,'rb') as f:
             content = f.read()

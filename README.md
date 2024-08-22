@@ -1,16 +1,22 @@
-# HMP-Formation_DevSecOps
+# HMP - Formation DevSecOps - CVE-2020-1747
 
 L'objectif de ce repository et de pouvoir fournir une formation DevSecOps la plus complète possible. Pour cela on exploite la CVE-2020-1747 qui permet à un utilisateur d'exécuter du code en injectant un fichier YAML.
 L'application permet à un utilisateur de selectionner un fichier YAML et de l'upload. Il intègre, par défaut, la version 5.3 de la bibliothèque PyYAML qui est vulnérable à la CVE-2020-1747
 
 Pré-requis :
-- Avoir Git installé sur son PC
-- Avoir un pc Windows
+- Avoir Git
+- Avoir un PC sous Windows
 - Avoir un compte github
+
+Github :
+1) Après s'être connecté, créer un repository
+2) Une fois le repo créé, aller dans "code" en haut et cliquier sur le bouton vert "<> CODE" Puis sur le deux carrés "Copy url to clipboard"
+3) Aller sur votre terminal et faites le commande suivi de ce qui a été copié "git clone <url>", cela va permettre de télécharger votre repository
+
 
 Etapes à suivre :
 
-1) Télécharger le zip via github et le dézipper
+1) Téléchargez le fichier ZIP via GitHub et décompressez-le, puis copiez les fichiers dans le répertoire que vous avez cloné précédemment
 
 2) Ouvrir le fichier requirements.txt et vérifier que la version de PyYAML est bien la 5.3 "PyYAML==5.3"
 
