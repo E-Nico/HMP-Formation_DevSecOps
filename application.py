@@ -5,11 +5,13 @@
 import yaml
 import subprocess
 import os
+from colorama import Style, Fore, init
 from flask import Flask, render_template, request, redirect, url_for, abort, \
     send_from_directory
 from pathlib import Path
 import sys
-   
+
+init()
 app = Flask(__name__)
 @app.route('/')
 def index():
@@ -19,14 +21,22 @@ def index():
 def upload():
     if request.method == 'POST':
         if 'file' not in request.files:
-            return 'No file part'
+            return f'{Fore.RED}[-] No file part{Fore.RESET}'
         file = request.files['file']
         if file.filename == '':
-            return 'No selected file'
-
-        file_name = file.filename
+            return f'{Fore.RED}[-] No selected file{Fore.RESET}'
+        
+        print(f'{Fore.YELLOW}{file.filename}{Fore.RESET}')
+        filename = file.filename
+        if '/' in file.filename or filename.count('.') == 1:
+            file_name = file.filename
+            print(f'{Fore.GREEN}[-] Good filename :{file.filename}{Fore.RESET}')
+        else:
+            file_name = file.filename
+            print(f'{Fore.RED}[-] Bad filename :{file.filename}{Fore.RESET}')
+            
         file_content = process_file(file_name)
-        print("file uploded !")
+        print(f"{Fore.GREEN}[+] file uploded !{Fore.RESET}")
     return render_template('index.html', file_content=file_content)
 
 
@@ -40,7 +50,7 @@ def process_file(file_name):
 
         return data
     else:
-        return "Uploaded file is not a YAML file."
+        return f"{Fore.RED}[-] Uploaded file is not a YAML file.{Fore.RESET}"
     
 def gen_reqtxt(directory):
 
@@ -50,7 +60,7 @@ def gen_reqtxt(directory):
         try:
             subprocess.run(["pip", "freeze"], stdout=f)
         except Exception as e:
-            print(f'Erreur dans le fichier de freeze')
+            print(f'{Fore.RED}Erreur dans le fichier de freeze{Fore.RESET}')
 
     #Récupère toutes les dépendances installées avec leur version
     all_lib_install = []
@@ -82,13 +92,3 @@ if __name__ == '__main__':
     directory = f'{Path(__file__).parent}'
     gen_reqtxt(directory)
     app.run(debug=False)
-    """
-    try:
-        with open("installed_versions.txt", "w") as f:
-            subprocess.run(["pip", "freeze"], stdout=f)
-        subprocess.run([sys.executable, "-m", "pipreqs.pipreqs", directory, "--use-local"])
-        print(f'Fichier requirements.txt generé avec succès ! ')
-    except Exception as e:
-        print(f'Erreur dans la génération du requirements.txt : {e}')
-   
-"""
