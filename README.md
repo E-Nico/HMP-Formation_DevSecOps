@@ -15,7 +15,6 @@ Github :
 2) Une fois le repo créé, aller dans "code" en haut et cliquier sur le bouton vert "<> CODE" Puis sur le deux carrés "Copy url to clipboard"
 3) Aller sur votre terminal et faites le commande suivi de ce qui a été copié "git clone <url>", cela va permettre de télécharger votre repository
 
-
 Etapes à suivre :
 
 1) Téléchargez le fichier ZIP via GitHub et décompressez-le, puis copiez les fichiers dans le répertoire que vous avez cloné précédemment
