@@ -4,7 +4,7 @@ L'objectif de ce repository et de pouvoir fournir une formation DevSecOps la plu
 L'application permet à un utilisateur de selectionner un fichier YAML et de l'upload. Il intègre, par défaut, la version 5.3 de la bibliothèque PyYAML qui est vulnérable. 
 
 POC : https://gist.github.com/adamczi/23a3b6d4bb7b2be35e79b0667d6682e1
-
+test
 A faire :
 - Finir présentation ppt
 - Faire un rapport rapide de correction
