@@ -1,7 +1,7 @@
 # pyyaml==5.3 required. Vulnerability has been fixed in 5.3.1
 # pip install PyYAML==5.3
 # CVE-2020-1747 
-# More: ret2libc's report in https://github.com/yaml/pyyaml/pull/386
+
 import yaml
 import subprocess
 import os
