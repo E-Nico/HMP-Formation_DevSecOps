@@ -5,6 +5,12 @@ L'application permet à un utilisateur de selectionner un fichier YAML et de l'u
 
 POC : https://gist.github.com/adamczi/23a3b6d4bb7b2be35e79b0667d6682e1
 
+A faire :
+- Finir présentation ppt
+- Faire un rapport rapide de correction
+- Ajouter mes/nos contact (Moi &/ou Joseph)
+- Voir pour obtenir des VMs avec : Git/VSCode et Python.
+
 Pré-requis :
 - Avoir Git (facultatif)
 - Avoir un PC sous Windows
