@@ -1,5 +1,5 @@
 # HMP - Formation DevSecOps - CVE-2020-1747
-
+test
 L'objectif de ce repository et de pouvoir fournir une formation DevSecOps la plus complète possible. Pour cela on exploite la CVE-2020-1747 qui permet à un utilisateur d'exécuter du code en injectant un fichier YAML.
 L'application permet à un utilisateur de selectionner un fichier YAML et de l'upload. Il intègre, par défaut, la version 5.3 de la bibliothèque PyYAML qui est vulnérable à la CVE-2020-1747. 
 
