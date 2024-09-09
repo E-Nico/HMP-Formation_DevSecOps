@@ -9,10 +9,10 @@ A faire :
 - Finir présentation ppt
 - Faire un rapport rapide de correction
 - Ajouter mes/nos contact (Moi &/ou Joseph)
-- Voir pour obtenir des VMs avec : Git/VSCode et Python.
+- Ajouter du story telling (Exploiter le fichier YAML)
 
 Pré-requis :
-- Avoir Git (facultatif)
+- Avoir Git
 - Avoir un PC sous Windows
 - Avoir un compte github
 
