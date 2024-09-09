@@ -22,6 +22,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+passw = 'P@ssw0rdSaf3'
 #Crée le /upload du HTML et permet de sélectionner un fichier et de l'envoyer
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
