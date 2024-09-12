@@ -41,8 +41,8 @@
                                 {% if value is mapping %}
                                         <!-- Si la valeur est un dictionnaire, on le parcourt récursivement -->
                                     <div class="subkey">
-                                    <ul>
-                                        {% for subkey, subvalue in value.items() %}
+                                        <ul>
+                                            {% for subkey, subvalue in value.items() %}
                                             <li class="no">
                                                 {{ subkey }}:
                                                 {% if subvalue is mapping %}
@@ -52,22 +52,22 @@
                                                                 <li class="no">{{ subsubkey }}: {{ subsubvalue }}</li>
                                                         {% endfor %}
                                                     </ul>
-                                                {% elif subvalue is sequence and subvalue is not string %}
+                                                    {% elif subvalue is sequence and subvalue is not string %}
                                                     <!-- Si la valeur est une liste -->
                                                     <ul>
                                                         {% for item in subvalue %}
                                                                 <li class="no">{{ item }}</li>
                                                         {% endfor %}
                                                     </ul>
-                                                {% else %}
+                                                    {% else %}
                                                     <!-- Si c'est une valeur simple ou une chaîne de caractères -->
                                                     {{ subvalue }}
                                                 {% endif %}
                                             </li>
                                         {% endfor %}
-                                    </ul>
-                                </div>
-                                {% elif value is sequence and value is not string %}
+                                        </ul>
+                                    </div>
+                                    {% elif value is sequence and value is not string %}
                                     <!-- Si la valeur est une liste -->
                                     <ul>
                                         {% for item in value %}
@@ -76,9 +76,13 @@
                                         </div>
                                         {% endfor %}
                                     </ul>
-                                {% else %}
+                                    {% else %}
                                     <!-- Si c'est une valeur simple ou une chaîne de caractères -->
-                                    {{ value }}
+                                    <ul>
+                                        <div class="subkey">
+                                            <li class="no">{{ value }}</li>
+                                        </div>
+                                    </ul>
                                 {% endif %}
                             </li>
                         <br>

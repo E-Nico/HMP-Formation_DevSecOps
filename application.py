@@ -53,18 +53,27 @@ def uploaded():
             #raise ValueError(f"{Fore.RED}[-] Invalid filename : {file.filename}{Fore.RESET}")
         else:
             file_content = process_file(file_name)
-            print(f"{Fore.GREEN}[+] file uploded !{Fore.RESET}")
+            string_file_content = str(file_content)
+            if string_file_content.__contains__('Errno'):
+                err = file_content
+                return render_template('error.html', err=err)
+            else:
+                print(f"{Fore.GREEN}[+] file uploded !{Fore.RESET}")
     return render_template('upload.html', file_content=file_content)
 
 #Utilisation de la fonction vulnérable selon le POC de la CVE-2020-1747
 def process_file(file_name):
     """Lit le fichier texte et retourne son contenu. Pour d'autres types de fichiers, ajustez le traitement."""
     #Chargement du fichier YAML
-    if ".yaml" in file_name:
-        with open(file_name,'rb') as f:
-            content = f.read()
+    if ".yaml" in file_name or ".yml" in file_name:
+        try:
+            with open(file_name,'rb') as f:
+                content = f.read()
+                data = yaml.load(content, Loader=yaml.FullLoader) # Using vulnerable FullLoader
+        except Exception as er:
+            print(f"{Fore.RED}[-] {er}{Fore.RESET}")
+            return er
         #Exécution de la fonction vulnérable
-        data = yaml.load(content, Loader=yaml.FullLoader) # Using vulnerable FullLoader
 
         return data
     else:

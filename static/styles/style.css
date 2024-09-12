@@ -245,18 +245,35 @@ footer a {
 }
 
 .no {
-    display: block
+    display: block;
+    position: relative;
+    left: 0px;
+    list-style:none;
+    margin: 0px;
+    padding:0px
 }
 
 .key {
     position: relative;
-    left: -50px;
+    left: -800px;
+    list-style:none;
+    margin: 0px;
+    padding:0px
 }
 
 .subkey {
     text-align: left;
     position: relative;
-    left: 1200px;
+    left: 450px;
+    list-style:none;
+    margin: 0px;
+    padding:0px
+}
+
+.stringsimple {
+    text-align: left;
+    position: relative;
+    left: 600px;
     list-style:none;
     margin: 0px;
     padding:0px
