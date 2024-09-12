@@ -14,6 +14,8 @@ import sys
 #Init est utilisé pour l'ajout de coleur dans le code
 init()
 
+secret="azerty123"
+
 #Permet de définir l'application Flask
 app = Flask(__name__)
 
