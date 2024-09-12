@@ -22,29 +22,39 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-with open('acces.txt','rb') as f:
-            passw = f.read()
-#Crée le /upload du HTML et permet de sélectionner un fichier et de l'envoyer
-@app.route('/upload', methods=['GET', 'POST'])
+@app.route('/upload')
 def upload():
+    return render_template('upload.html')
 
+@app.route('/error')
+def error():
+    return render_template('error.html')
+
+#Crée le /upload du HTML et permet de sélectionner un fichier et de l'envoyer
+@app.route('/uploaded', methods=['GET', 'POST'])
+def uploaded():
     if request.method == 'POST':
 
         #Permet la récupération du fcihier depuis l'HTML
         if 'file' not in request.files:
-            return f'{Fore.RED}[-] No file part{Fore.RESET}'
+            err = "No file part"
+            return render_template('error.html', err=err)
         file = request.files['file']
         if file.filename == '':
-            return f'{Fore.RED}[-] No selected file{Fore.RESET}'
+            err = "No selected file"
+            return render_template('error.html', err=err)
+            #return f'{Fore.RED}[-] No selected file{Fore.RESET}'
         
         file_name = file.filename
         #Check si le fichier entré est bon (test pour répondre à CodeQL)
         if ".." in file_name or "/" in file_name or "\\" in file_name:
-            raise ValueError(f"{Fore.RED}[-] Invalid filename : {file.filename}{Fore.RESET}")
+            err = "Invalid filename"
+            return render_template('error.html', err=err)
+            #raise ValueError(f"{Fore.RED}[-] Invalid filename : {file.filename}{Fore.RESET}")
         else:
             file_content = process_file(file_name)
             print(f"{Fore.GREEN}[+] file uploded !{Fore.RESET}")
-    return render_template('index.html', file_content=file_content)
+    return render_template('upload.html', file_content=file_content)
 
 #Utilisation de la fonction vulnérable selon le POC de la CVE-2020-1747
 def process_file(file_name):
@@ -58,7 +68,9 @@ def process_file(file_name):
 
         return data
     else:
-        return f"{Fore.RED}[-] Uploaded file is not a YAML file.{Fore.RESET}"
+        err = "Upload file is not a YAML file"
+        return render_template('error.html', err=err)
+        #return f"{Fore.RED}[-] Uploaded file is not a YAML file.{Fore.RESET}"
 
 #Permet de générer le fichier requirements.txt
 def gen_reqtxt(directory):
@@ -94,8 +106,6 @@ def gen_reqtxt(directory):
     with open("requirements.txt", "w") as f:
         for item in final_lib:
             f.write(item)
-
-
 
 if __name__ == '__main__':
     #Récupère le path de l'application
