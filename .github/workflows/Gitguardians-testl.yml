@@ -10,4 +10,4 @@ jobs:
       - name: Install ggshield
         run: pip install ggshield
       - name: Scan for secrets
-        run: ggshield scan repo .
+        run: ggshield secret scan repo .
