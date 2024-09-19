@@ -1,0 +1,42 @@
+name: TruffleHog Secret Scan
+
+# Déclenche le workflow lors de pushes ou de pull requests
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  trufflehog-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Vérification du code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Installer Python et pip
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      # Installer TruffleHog via pip
+      - name: Install TruffleHog
+        run: |
+          pip install truffleHog
+
+      # Exécuter TruffleHog sur le dépôt
+      - name: Run TruffleHog
+        run: |
+          trufflehog git --json https://github.com/${{ github.repository }} | tee trufflehog-output.json
+
+      # Upload les résultats en tant qu'artefact GitHub
+      - name: Upload TruffleHog report
+        uses: actions/upload-artifact@v2
+        with:
+          name: trufflehog-report
+          path: trufflehog-output.json
